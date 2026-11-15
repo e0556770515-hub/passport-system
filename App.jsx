@@ -38,7 +38,7 @@ function Login({ blocked }) {
   const go = async e => {
     e.preventDefault(); setBusy(true); setErr('')
     const { error } = await supabase.auth.signInWithPassword({ email, password: pw })
-    if (error) setErr('אימייל או סיסמה שגויים'); setBusy(false)
+    if (error) setErr(error.message); setBusy(false)
   }
   return (
     <form className="login" onSubmit={go}>
